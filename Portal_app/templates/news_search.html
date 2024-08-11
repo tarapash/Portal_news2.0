@@ -11,7 +11,7 @@
    </form>
 
    <hr>
-  {% if posts %}
+  {% if news_search %}
 
     <table width="100%"> <!-- Начинаем описывать таблицу , ширина таблицы = 50%-->
         <tr> <!-- Добавляем строку -->
@@ -22,17 +22,17 @@
             <td> <b>Category Type</b> </td>
         </tr> <!-- Не забываем закрыть HTML-тег строки -->
 
-           {% for post in posts %} <!-- данные из views -->
+           {% for post in news_search %} <!-- данные из views -->
            <tr>
                <!-- Не забываем, что переменные в шаблоне ничем не отличаются
                 от переменных в Python. Здесь также можно получать доступ к
                 полям объекта модели. Например, здесь мы выводим имя,
                 в следующем столбце описание, и т.д.  -->
-               <td>{{ one_news.id}}</td>
-               <td>{{ one_news.heading|censor }}</td>
-               <td>{{ one_news.datetime_post|date:"d M Y"}}</td>
-               <td>{{ one_news.text|truncatechars:20|censor}}</td>
-               <td>{{ one_news.post_category}}</td>
+               <td>{{ post.id}}</td>
+               <td>{{ post.heading|censor }}</td>
+               <td>{{ post.datetime_post|date:"d M Y"}}</td>
+               <td>{{ post.text|truncatechars:20|censor}}</td>
+               <td>{{ post.post_category}}</td>
                
            </tr>
            {% endfor %}
